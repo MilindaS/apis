@@ -1,14 +1,16 @@
-<%@page import="java.text.DateFormat"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="swdb2Map.PassengerId"%>
-<%@page import="swdb2Map.Passenger"%>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-      
-    
+<%-- 
+    Document   : header1
+    Created on : Oct 10, 2016, 4:49:58 PM
+    Author     : ADP-015
+--%>
 
-    <title>Advance Passenger Information System </title>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>APIS</title>
+         <title>Advance Passenger Information System </title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +36,8 @@
             });
         });
         </script>
-  </head>
-
-  
+    </head>
+    <body>
+        
+    </body>
+</html>

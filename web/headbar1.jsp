@@ -1,12 +1,16 @@
-<body class="nav-md">
-      <%@page import="swdb2Map.Crew"%>
-<%@page import="java.util.List"%>
-<%@page import="org.hibernate.Criteria"%>
-<%@page import="org.hibernate.Session"%>
-<%@page import="swdb2Map.NewHibernateUtil"%>
-<%Session hbsesion = NewHibernateUtil.getSessionFactory().openSession(); 
-                %>
-    <div class="container body">
+<%-- 
+    Document   : headbar1
+    Created on : Oct 10, 2016, 4:51:53 PM
+    Author     : ADP-015
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    
+   
+       <body>
+        <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
@@ -99,3 +103,8 @@
                   <button data-toggle="modal" data-target=".customs1" >Add Customs</button>
               </div>
           </div>
+        </div>
+      
+    </body>
+   
+</html>

@@ -1,4 +1,4 @@
-<%@include  file="header.jsp"%>
+
 
   <body class="login">
     <div>

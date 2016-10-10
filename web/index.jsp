@@ -1,17 +1,18 @@
 <%-- 
     Document   : index
-    Created on : Oct 10, 2016, 5:29:04 PM
-    Author     : ADP-006
+    Created on : Oct 10, 2016, 5:02:24 PM
+    Author     : ADP-015
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+      <%@include file="headbar1.jsp" %>
+    <%@include file="header1.jsp" %>
+  
+    
     <body>
-        <h1>Hello World!s</h1>
+      
     </body>
+    <%@include file="footer.jsp" %>
 </html>
