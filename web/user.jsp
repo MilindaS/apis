@@ -47,7 +47,7 @@ ResultSet rs = u.getUsers();
                                     <td class=" "><%=rs.getString("agencyname") %></td>
                                     <td class=" "><%=rs.getString("agencycode") %></td>
                                     <td class=" "><%=rs.getString("phone") %></td>
-                                    <td class=" ">View</td>
+                                    <td class=" "> <a class="btn btn-success btn-xs" style="margin: 0px 0px;">View</a></td>
                                 </tr>
                                 <% } %>
                                 
