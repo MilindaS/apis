@@ -5,10 +5,18 @@
  */
 package common;
 
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
+
 import java.sql.SQLException;
 
+
+import static common.Constants.DB_URL;
+import static common.Constants.JDBC_DRIVER;
+import static common.Constants.PASS;
+import static common.Constants.USER;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,10 +29,7 @@ import java.sql.SQLException;
  */
 public class DBCon {
     
-      static final String JDBC_DRIVER="com.mysql.jdbc.Driver";
-    static final String DB_URL ="jdbc:mysql://localhost:3306/swdb2";
-    static final String USER="root";
-    static final String PASS="13dil20";
+    
     public static Connection getMyConnection() throws ClassNotFoundException, SQLException {
         Class.forName(JDBC_DRIVER);
         //System.out.println("connecting to database....");
