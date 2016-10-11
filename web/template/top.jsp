@@ -39,7 +39,7 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <!-- top tiles -->
-          <%@include file="tile_count.jsp" %>
+          
           <!-- /top tiles -->
 
           
