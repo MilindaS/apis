@@ -5,12 +5,17 @@
  */
 package servlet;
 
+import common.DBCon;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,17 +35,29 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        PrintWriter out = response.getWriter();
+        try  {
+            Connection c = DBCon.getMyConnection();
+            Statement s = c.createStatement();
+            
+            String un = request.getParameter("uname");
+            String pw = request.getParameter("pword");
+            
+            ResultSet rs = s.executeQuery("SELECT * FROM ogauser where username ='"+ un +"' and password = '"+pw+"' ");
+            
+            if (rs.next()){
+                
+                HttpSession hs = request.getSession();
+                hs.setAttribute("username", un);
+                hs.setAttribute("commonname", rs.getString(2));
+                hs.setAttribute("agencyname", rs.getString(3));
+                response.sendRedirect("index.jsp");
+                
+            }
+            
+           
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

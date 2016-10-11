@@ -8,7 +8,7 @@
         
           <div class="animate form login_form">
           <section class="login_content">
-              <form action="login" method="POST">
+              <form action="Login" method="POST">
               <h1>Login Form</h1>
               <div>
                   <input type="text" class="form-control" placeholder="Username" required="" name="uname" id="uname"/>

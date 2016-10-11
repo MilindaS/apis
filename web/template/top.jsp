@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@include file="header.jsp" %>
     <div class="container body">
       <div class="main_container">
@@ -16,7 +17,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><%HttpSession hts = request.getSession();  out.print(hts.getAttribute("commonname"));  %></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
