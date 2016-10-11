@@ -1,4 +1,4 @@
-<%@include file="header.jsp" %>
+<%@include file="template/header.jsp" %>
   <body class="login">
     <div>
       <a class="hiddenanchor" id="signup"></a>
@@ -44,4 +44,4 @@
       </div>
     </div>
   </body>
-  <%@include file="footer.jsp" %>
+  <%@include file="template/footer.jsp" %>

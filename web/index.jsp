@@ -1,4 +1,4 @@
-<%@include file="top.jsp" %>
+<%@include file="template/top.jsp" %>
     <div class="row">
     </div>
-<%@include file="bottom.jsp" %>
+<%@include file="template/bottom.jsp" %>
