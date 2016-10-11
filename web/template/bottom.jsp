@@ -2,7 +2,7 @@
 <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            Advance Passanger Information System  by <a href="www.customs.gov.lk">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>

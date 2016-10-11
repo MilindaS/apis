@@ -5,14 +5,10 @@
  */
 package servlet;
 
-import common.DBCon;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import javafx.scene.control.Alert;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,9 +16,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ADP-006
+ * @author ADP-015
  */
-public class Login extends HttpServlet {
+@WebServlet(name = "logout", urlPatterns = {"/logout"})
+public class Logout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,29 +35,9 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try  {
-            Connection c = DBCon.getMyConnection();
-            Statement s = c.createStatement();
-            
-            String un = request.getParameter("uname");
-            String pw = request.getParameter("pword");
-            
-            ResultSet rs = s.executeQuery("SELECT * FROM ogauser where username ='"+ un +"' and password = '"+pw+"' ");
-            
-            if (rs.next()){
-                
-                HttpSession hs = request.getSession();
-                hs.setAttribute("username", un);
-                hs.setAttribute("commonname", rs.getString(2));
-                hs.setAttribute("agencyname", rs.getString(3));
-                response.sendRedirect("index.jsp");
-                
-            } else {
-                
-                response.sendRedirect("login.jsp");
-                
-            }
-            
-           
+            HttpSession ses = request.getSession();
+            ses.invalidate();
+            response.sendRedirect("login.jsp");
         }catch (Exception e){
             e.printStackTrace();
         }
