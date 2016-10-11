@@ -1,16 +1,13 @@
-<%-- 
-    Document   : header1
-    Created on : Oct 10, 2016, 4:49:58 PM
-    Author     : ADP-015
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>APIS</title>
-         <title>Advance Passenger Information System </title>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentellela Alela! | </title>
 
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -27,17 +24,6 @@
 
     <!-- Custom Theme Style -->
     <link href="css/custom.min.css" rel="stylesheet">
-    
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#home").click(function() {
-                $("#divcrew").hide();
-                $("#home").show();
-            });
-        });
-        </script>
-    </head>
-    <body>
-        
-    </body>
-</html>
+  </head>
+
+  <body class="nav-md">
