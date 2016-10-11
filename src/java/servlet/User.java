@@ -5,8 +5,12 @@
  */
 package servlet;
 
+import common.DBCon;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -85,4 +89,16 @@ public class User extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+    public ResultSet getUsers(){
+        ResultSet rs = null;
+        try {
+            Connection conn =  DBCon.getMyConnection();
+            Statement st = conn.createStatement();
+            rs = st.executeQuery("select * from ogauser");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rs;
+    }
 }
