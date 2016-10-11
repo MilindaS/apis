@@ -25,7 +25,7 @@ ResultSet rs = u.getUsers();
                 </div>
                 <div class="x_content">
                     <div class="table-responsive">
-                        <table class="table table-striped jambo_table bulk_action">
+                        <table  id="datatable" class="table table-striped jambo_table bulk_action">
                             <thead>
                                 <tr class="headings">
                                     <th class="column-title">Username </th>
@@ -61,3 +61,9 @@ ResultSet rs = u.getUsers();
 
 </div>
 <%@include file="template/bottom.jsp" %>
+
+<script>
+    $(document).ready(function(){
+        $('#datatable').dataTable();
+    });
+</script>
