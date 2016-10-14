@@ -2,11 +2,11 @@
 <%@page import="java.sql.Connection"%>
 <%@page import="servlet.User"%>
 <%@include file="template/top.jsp" %>
+<%@page import="ajaxRequests.GetUser"%>
+
 <%
-
-User u = new User();
-ResultSet rs = u.getUsers();
-
+    User u = new User();
+    ResultSet rs = u.getUsers();
 %>
 <div class="row">
     <div class="page-title">
@@ -47,7 +47,8 @@ ResultSet rs = u.getUsers();
                                     <td class=" "><%=rs.getString("agencyname") %></td>
                                     <td class=" "><%=rs.getString("agencycode") %></td>
                                     <td class=" "><%=rs.getString("phone") %></td>
-                                    <td class=" "> <a data-toggle="modal" data-target="#viewUser" class="btn btn-success btn-xs" style="margin: 0px 0px;">View</a>
+                                    <td class=" "> <a class="btn btn-success btn-xs usernameToggle" data-username="<%=rs.getString("username") %>" style="margin: 0px 0px;">View</a>
+                                        <a data-toggle="modal" data-target="#editUser" class="btn btn-warning btn-xs" style="margin: 0px 0px;">Edit</a>
                                         <a data-toggle="modal" data-target="#deleteUser" class="btn btn-danger btn-xs" style="margin: 0px 0px;">Delete</a>
                                     </td>
                                 </tr>
@@ -76,27 +77,27 @@ ResultSet rs = u.getUsers();
        <table class="table">
                       <tbody>
                         <tr>
-                          <td>Username</td>
+                            <td><b>Username</b></td>
                             <td id="tdUsername">Milinda</td>
                         </tr>
                         <tr>
-                          <td>Common name</td>
+                            <td><b>Common name</b></td>
                           <td id="tdCommonName">mili</td>
                         </tr>
                         <tr>
-                          <td>Email</td>
+                            <td><b>Email</b></td>
                           <td id="tdEmail">hlsmilinda@gmail.com</td>
                         </tr>
                         <tr>
-                          <td>Agency Name</td>
+                            <td><b>Agency Name</b></td>
                           <td id="tdAgencyName">hlsmilinda@gmail.com</td>
                         </tr>
                         <tr>
-                          <td>Agency Code</td>
+                          <td><b>Agency Code</b></td>
                           <td id="tdAgency">hlsmilinda@gmail.com</td>
                         </tr>
                         <tr>
-                          <td>Phone</td>
+                          <td><b>Phone</b></td>
                           <td id="tdPhone">hlsmilinda@gmail.com</td>
                         </tr>
                       </tbody>
@@ -111,6 +112,56 @@ ResultSet rs = u.getUsers();
 </div><!-- /.modal -->
 
 
+
+
+
+
+<!--Edit User Modal-->
+                                
+<div class="modal fade" tabindex="-1" role="dialog" id="editUser">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">User View</h4>
+      </div>
+      <div class="modal-body">
+       <table class="table">
+                      <tbody>
+                        <tr>
+                            <td><b>Username</b></td>
+                            <td id="tdUsername">Milinda</td>
+                        </tr>
+                        <tr>
+                            <td><b>Common name</b></td>
+                          <td id="tdCommonName">mili</td>
+                        </tr>
+                        <tr>
+                            <td><b>Email</b></td>
+                          <td id="tdEmail">hlsmilinda@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><b>Agency Name</b></td>
+                          <td id="tdAgencyName">hlsmilinda@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td><b>Agency Code</b></td>
+                          <td id="tdAgency">hlsmilinda@gmail.com</td>
+                        </tr>
+                        <tr>
+                          <td><b>Phone</b></td>
+                          <td id="tdPhone">hlsmilinda@gmail.com</td>
+                        </tr>
+                      </tbody>
+                    </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
 
@@ -145,5 +196,17 @@ ResultSet rs = u.getUsers();
 <script>
     $(document).ready(function(){
         $('#datatable').dataTable();
+        
+        $('.usernameToggle').click(function(){
+            var username = $(this).data('username');
+            $.ajax({
+                url:'GetUser',
+                type:'POST',
+                data:{'username':username},
+                success:function(data){
+                    $('#editUser').modal('show');
+                }
+            });
+        });
     });
 </script>
