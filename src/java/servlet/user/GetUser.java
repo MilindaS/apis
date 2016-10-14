@@ -1,4 +1,4 @@
-package ajaxRequests;
+package servlet.user;
 
 
 

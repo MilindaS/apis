@@ -1,8 +1,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="servlet.User"%>
+<%@page import="servlet.user.User"%>
 <%@include file="template/top.jsp" %>
-<%@page import="ajaxRequests.GetUser"%>
+<%@page import="servlet.user.GetUser"%>
 
 <%
     User u = new User();
@@ -122,7 +122,7 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="editUser">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form class="form-horizontal form-label-left" data-toggle="validator" role="form">
+            <form action="addUser" method="POST" class="form-horizontal form-label-left" data-toggle="validator" role="form">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Add New User</h4>
@@ -151,7 +151,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Email :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Enter Email Here" name="addCommonName" id="addEmailName" required>
+                            <input type="email" class="form-control" placeholder="Enter Email Here" name="addCommonName" id="addEmailName" required>
                         </div>
                     </div>
                     <div class="form-group">
