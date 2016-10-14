@@ -51,6 +51,7 @@
     <script src="vendors/datatables.net-scroller/js/datatables.scroller.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="js/custom.min.js"></script>
+    <script src="js/validator.min.js"></script>
 
     <!-- Flot -->
    

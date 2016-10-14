@@ -19,11 +19,14 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONArray;
 
 /**
  *
@@ -50,6 +53,19 @@ public class GetUser extends HttpServlet {
             Connection conn = DBCon.getMyConnection();
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery("select * from ogauser where username='"+username+"'");
+            JSONArray json = new JSONArray();
+            
+            while(rs.next()){
+                Map m = new HashMap();
+                m.put("username",rs.getString("username"));
+                m.put("commonname",rs.getString("commonname"));
+                m.put("agencyname",rs.getString("agencyname"));
+                m.put("email",rs.getString("email"));
+                m.put("agencycode",rs.getString("agencycode"));
+                m.put("phone",rs.getString("phone"));
+                json.add(m);
+            }
+            out.write(json.toJSONString());
         } catch (Exception e) {
             e.printStackTrace();
         }
