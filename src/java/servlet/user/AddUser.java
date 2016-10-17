@@ -9,6 +9,7 @@ import common.DBCon;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -50,7 +51,13 @@ public class AddUser extends HttpServlet {
             
             Connection conn = DBCon.getMyConnection();
             Statement st = conn.createStatement();
-            st.executeUpdate("INSERT INTO ogauser(username,commonname,agencyname,email,agencycode,password,phone) VALUES('"+username+"','"+commonname+"','"+agencyName+"','"+email+"','"+agencyCode+"',md5('"+password+"'),'"+phone+"')");
+            ResultSet rs = st.executeQuery("SELECT * FROM ogauser WHERE username='"+username+"'");
+            if(rs.next()){
+                st.executeUpdate("UPDATE ogauser SET (username='"+username+"',commonname='"+commonname+"',agencyname='"+agencyName+"',email='"+email+"',agencycode='"+agencyCode+"',phone='"+phone+"')");
+            }else{
+                st.executeUpdate("INSERT INTO ogauser(username,commonname,agencyname,email,agencycode,password,phone) VALUES('"+username+"','"+commonname+"','"+agencyName+"','"+email+"','"+agencyCode+"',md5('"+password+"'),'"+phone+"')");
+            }
+            
             response.setStatus(200);
             response.sendRedirect("user.jsp");
         } catch (Exception e) {

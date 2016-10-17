@@ -50,8 +50,8 @@
                                     <td class=" "><%=rs.getString("agencyname")%></td>
                                     <td class=" "><%=rs.getString("agencycode")%></td>
                                     <td class=" "><%=rs.getString("phone")%></td>
-                                    <td class=" "> <a class="btn btn-success btn-xs usernameToggle" data-username="<%=rs.getString("username")%>" style="margin: 0px 0px;">View</a>
-                                        <a data-toggle="modal" data-target="#editUser" class="btn btn-warning btn-xs" style="margin: 0px 0px;">Edit</a>
+                                    <td class=" "> <a class="btn btn-success btn-xs viewToggle" data-username="<%=rs.getString("username")%>" style="margin: 0px 0px;">View</a>
+                                        <a data-toggle="modal" class="btn btn-warning btn-xs editToggle" data-username="<%=rs.getString("username")%>" style="margin: 0px 0px;">Edit</a>
                                         <a data-toggle="modal" data-target="#deleteUser" class="btn btn-danger btn-xs" style="margin: 0px 0px;">Delete</a>
                                     </td>
                                 </tr>
@@ -127,7 +127,7 @@
             <form action="AddUser" method="POST" class="form-horizontal form-label-left" data-toggle="validator" role="form">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Add New User</h4>
+                <h4 class="modal-title"><span id="nameTitle">Add New</span> User</h4>
             </div>
             <div class="modal-body">
                 
@@ -167,14 +167,14 @@
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="cpp">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Password :</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <div class="col-md-9 col-sm-9 col-xs-12" >
                             <input type="password" class="form-control" placeholder="Enter Password Here" name="addPassword" id="addPassword" data-minlength="6" required>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="cppre">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Re Password :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="password" class="form-control" placeholder="Enter Re Password Here" id="addPasswordRe" data-match="#addPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
@@ -223,6 +223,27 @@
 </div><!-- /.modal -->
 
 
+<!--View User Modal-->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="changePassword">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">User View</h4>
+            </div>
+            <div class="modal-body">
+                <p>Do you really want to delete this user ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger">Yea! Delete</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 
 
 
@@ -234,7 +255,7 @@
     $(document).ready(function () {
         $('#datatable').dataTable();
 
-        $('.usernameToggle').click(function () {
+        $('.viewToggle').click(function () {
             var username = $(this).data('username');
             $.ajax({
                 url: 'GetUser',
@@ -244,11 +265,36 @@
                 success: function (data) {
                     $('#tdUsernameView').html(data[0].username);
                     $('#tdCommonNameView').html(data[0].commonname);
-                    $('#tdEmailView').html(data[0].email);
+                    $('#addAgencyName').html(data[0].email);
                     $('#tdAgencyNameView').html(data[0].agencyname);
                     $('#tdAgencyView').html(data[0].agencycode);
                     $('#tdPhoneView').html(data[0].phone);
                     $('#viewUser').modal('show');
+
+                }
+            });
+        });
+        
+        
+        $('.editToggle').click(function () {
+            var username = $(this).data('username');
+            $.ajax({
+                url: 'GetUser',
+                type: 'POST',
+                data: {'username': username},
+                dataType: 'JSON',
+                success: function (data) {
+                    $('#nameTitle').html("Edit");
+                    $('#addUsername').val(data[0].username);
+                    $('#addUsername').attr("disabled","disabled");
+                    $('#addCommonName').val(data[0].commonname);
+                    $('#addEmail').val(data[0].email);
+                    $('#addAgencyName').val(data[0].agencyname);
+                    $('#addAgencyCode').val(data[0].agencycode);
+                    $('#cppre').remove();
+                    $('#cpp').remove();
+                    $('#addPhone').val(data[0].phone);
+                    $('#editUser').modal('show');
 
                 }
             });
