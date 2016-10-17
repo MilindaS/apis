@@ -3,6 +3,8 @@
 <%@page import="servlet.user.User"%>
 <%@include file="template/top.jsp" %>
 <%@page import="servlet.user.GetUser"%>
+<%@page import="servlet.user.AddUser"%>
+<%@page import="servlet.user.CheckUser"%>
 
 <%
     User u = new User();
@@ -122,7 +124,7 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="editUser">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form action="addUser" method="POST" class="form-horizontal form-label-left" data-toggle="validator" role="form">
+            <form action="AddUser" method="POST" class="form-horizontal form-label-left" data-toggle="validator" role="form">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Add New User</h4>
@@ -133,37 +135,57 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Username :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Enter Username Here" name="addUsername" id="addUsername" required>
+                            <input type="text" class="form-control" placeholder="Enter Username Here" name="addUsername" data-remote-error="This username has been already taken!" data-remote="CheckUser" id="addUsername" required >
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Common Name :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                             <input type="text" class="form-control" placeholder="Enter Common Name Here" name="addCommonName" id="addCommonName" required>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Agency Name :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Enter Agency Name Here" name="addCommonName" id="addAgencyName" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email :</label>
-                        <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="email" class="form-control" placeholder="Enter Email Here" name="addCommonName" id="addEmailName" required>
+                            <input type="text" class="form-control" placeholder="Enter Agency Name Here" name="addAgencyName" id="addAgencyName" required>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Agency Code :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Enter Agency Code Here" name="addCommonName" id="addAgencyCode" required>
+                            <input type="text" class="form-control" placeholder="Enter Agency Code Here" name="addAgencyCode" id="addAgencyCode" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="email" class="form-control" placeholder="Enter Email Here" name="addEmail" id="addEmail" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Password :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="password" class="form-control" placeholder="Enter Password Here" name="addPassword" id="addPassword" data-minlength="6" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Re Password :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="password" class="form-control" placeholder="Enter Re Password Here" id="addPasswordRe" data-match="#addPassword" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone :</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control" placeholder="Enter Phone Here" name="addCommonName" id="addPhone" required>
+                            <input type="text" class="form-control" placeholder="Enter Phone Here" name="addPhone" id="addPhone" required>
+                            <div class="help-block with-errors"></div>
                         </div>
                     </div>
                 
