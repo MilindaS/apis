@@ -7,7 +7,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Search Passengers<small>APIS</small></h2>
+                    <h2>Search Passengers<small>by name</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -36,6 +36,32 @@
                           <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
+                        
+                        <script>
+                              $(function(){
+                                  $("#first-name").autocomplete({
+                                      source : function(request,response){
+                                         $.ajax({
+                                         url: "PassengerAutoComp",type: 'POST', dataType: 'json',
+                                         data: {name:request.term},
+                                         success: function (data) {
+                                         response($.map(data, function (item){
+                                         return {
+                                         label:item.name,
+                                         value:item.value,
+                                         }
+                                         }));
+                        
+                                          },
+                                         });
+                                          console.log(request);
+                                      },
+                                      minLength:2
+                                  });
+                              });
+                              
+                          </script>
+                        
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
                         </label>
@@ -63,7 +89,7 @@
                         </div>
                       </div>
                        <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="passport-number">Passport Num <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="passport-number">Passport Number <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="passport-number" name="passport-number" required="required" class="form-control col-md-7 col-xs-12">
