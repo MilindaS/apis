@@ -292,6 +292,7 @@
                     $('#addAgencyName').val(data[0].agencyname);
                     $('#addAgencyCode').val(data[0].agencycode);
                     $('#cppre').remove();
+                    $('#addUsername').removeAttr('data-remote');
                     $('#cpp').remove();
                     $('#addPhone').val(data[0].phone);
                     $('#editUser').modal('show');
