@@ -1,14 +1,15 @@
 <%@include file="template/header.jsp" %>
-  <body class="login">
+<body class="login" style="background-image: url(img/AirportServices.jpg);background-size: cover;background-image: ">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
-      <div class="login_wrapper">
+      <div class="login_wrapper" >
         
-          <div class="animate form login_form">
+          <div class="animate form login_form" style="background:rgba(0,0,0,0.7);padding:0px 20px;box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.5);">
           <section class="login_content">
-              <form action="Login" method="POST">
+             
+                  <form action="Login1" method="POST">
               <h1>Login Form</h1>
               <div>
                   <input type="text" class="form-control" placeholder="Username" required="" name="uname" id="uname"/>
@@ -36,7 +37,8 @@
                   <p>©2016 All Rights Reserved. APIS. Privacy and Terms</p>
                 </div>
               </div>
-            </form>
+                  </form>
+          
           </section>
         </div>
 

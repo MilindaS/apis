@@ -5,21 +5,24 @@
  */
 package servlet;
 
+import common.DBCon;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ADP-015
  */
-@WebServlet(name = "logout", urlPatterns = {"/logout"})
-public class Logout extends HttpServlet {
+@WebServlet(name = "UserProfile", urlPatterns = {"/UserProfile"})
+public class UserProfile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,9 +38,34 @@ public class Logout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try  {
-            HttpSession ses = request.getSession();
-            ses.invalidate();
-            response.sendRedirect("login.jsp");
+            try (Connection con = DBCon.getMyConnection()) {
+                //Statement s = con.createStatement();
+                
+                String email = request.getParameter("email");
+                String pno = request.getParameter("phone-no");
+                String uname = request.getParameter("first-name");
+                
+                PreparedStatement ps ;
+                
+                ps = (com.mysql.jdbc.PreparedStatement) con.prepareStatement("update ogauser set email=?,phone=? where username =? ");
+                ps.setString(1, email);
+                ps.setString(2,pno);
+                ps.setString(3, uname);
+                ps.executeUpdate();
+                
+                
+                //out.println(uname);
+                
+                //s.executeUpdate("UPDATE ogauser set email='"+email+"' and phone = '"+pno+"' WHERE username ='"+uname+"' ");
+                
+                
+                //s.close();
+                con.close();
+                
+            }
+            
+            response.sendRedirect("userprofile.jsp");
+          
         }catch (Exception e){
             e.printStackTrace();
         }
