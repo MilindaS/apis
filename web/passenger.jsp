@@ -32,49 +32,35 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
                         </label>
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control" ></select>
+                          </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-                        
-                        <script>
-                              $(function(){
-                                  $("#first-name").autocomplete({
-                                      source : function(request,response){
-                                         $.ajax({
-                                         url: "PassengerAutoComp",type: 'POST', dataType: 'json',
-                                         data: {name:request.term},
-                                         success: function (data) {
-                                         response($.map(data, function (item){
-                                         return {
-                                         label:item.name,
-                                         value:item.value,
-                                         }
-                                         }));
-                        
-                                          },
-                                         });
-                                          console.log(request);
-                                      },
-                                      minLength:2
-                                  });
-                              });
-                              
-                          </script>
-                        
+                       
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
                         </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
+                        
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                                <select class="select_1 form-control"></select>
+                        </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
                         </div>
                       </div>
+                        
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -88,13 +74,86 @@
                           </div>
                         </div>
                       </div>
-                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="passport-number">Passport Number <span class="required">*</span>
-                        </label>
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nationality">Nationality </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="passport-number" name="passport-number" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="last-name" name="nationality" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
+                        
+                       <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="traveldoc-number">Travel Document Number </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="traveldoc-number" name="traveldoc-number" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="traveldoc-type">Travel Document Type </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="traveldoc-type" name="traveldoc-type" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="td-expdate">Travel Document Expiry Date </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="date" id="td-expdate" name="td-expdate" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
+                        </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="place-td-issue">Travel Document Issued Place </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="traveldoc-type" name="place-td-issue" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="flight-number">Flight Number </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="flight-number" name="flight-number" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        </div>
+                        
+                        
+                        
+                        
+                         <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dob">Date of Birth </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="date" id="td-expdate" name="dob" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
+                        </div>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -183,3 +242,35 @@ ResultSet rs = p.getPassengers();
         $('#datatable').dataTable();
     });
 </script>
+
+<script>
+                              $(function(){
+                                  $("#first-name").autocomplete({
+                                      source : function(request,response){
+                                         $.ajax({
+                                         url: "PassengerAutoComp",type: 'POST', dataType: 'json',
+                                         data: {name:request.term},
+                                         success: function (data) {
+                                         response($.map(data, function (item){
+                                         return {
+                                         label:item.name,
+                                         value:item.value,
+                                         }
+                                         }));
+                        
+                                          },
+                                         });
+                                          console.log(request);
+                                      },
+                                      minLength:2
+                                  });
+                              });
+                              
+                          </script>
+                          
+ <script>
+        var html  = "<option value = '1'>All</option><option value = '2'>Equal</option><option value = '3'>Contains Substring</option>";
+        $(".select_1").html(html);
+</script>
+
+

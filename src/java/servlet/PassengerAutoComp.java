@@ -9,6 +9,7 @@ import common.DBCon;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -50,6 +51,8 @@ public class PassengerAutoComp extends HttpServlet {
             out.println("</html>");
         }
         String name = request.getParameter("name");
+        JSONArray jarr = new JSONArray();
+        JSONObject jobj = new JSONObject();
         
         try {
             Connection c = DBCon.getMyConnection();
@@ -57,8 +60,9 @@ public class PassengerAutoComp extends HttpServlet {
             
             System.out.println(name);
             
-            JSONArray jarr = new JSONArray();
-            JSONObject jobj = new JSONObject();
+            ResultSet rs = null;
+            
+            rs = s.executeQuery("SELECT * FROM passenger WHERE First_Name LIKE ");
             
             
             
