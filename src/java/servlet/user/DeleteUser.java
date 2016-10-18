@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
-@WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
-public class AddUser extends HttpServlet {
+@WebServlet(name = "DeleteUser", urlPatterns = {"/DeleteUser"})
+public class DeleteUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,29 +37,14 @@ public class AddUser extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            
             PrintWriter out = response.getWriter();
-            
-            String username = request.getParameter("addUsername");
-            String commonname = request.getParameter("addCommonName");
-            String agencyName = request.getParameter("addAgencyName");
-            String email = request.getParameter("addEmail");
-            String agencyCode = request.getParameter("addAgencyCode");
-            String phone = request.getParameter("addPhone");
-            String password = request.getParameter("addPassword");
-            
-            
+            String username = request.getParameter("username");
             Connection conn = DBCon.getMyConnection();
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM ogauser WHERE username='"+username+"'");
-            if(rs.next()){
-                st.executeUpdate("UPDATE ogauser SET commonname='"+commonname+"',agencyname='"+agencyName+"',email='"+email+"',agencycode='"+agencyCode+"',phone='"+phone+"' WHERE username='"+username+"' ");
-            }else{
-                st.executeUpdate("INSERT INTO ogauser(username,commonname,agencyname,email,agencycode,password,phone) VALUES('"+username+"','"+commonname+"','"+agencyName+"','"+email+"','"+agencyCode+"',md5('"+password+"'),'"+phone+"')");
-            }
+           
+            st.executeUpdate("DELETE FROM ogauser WHERE username='"+username+"'");
             
-            response.setStatus(200);
-            response.sendRedirect("user.jsp");
+            out.write("1");
         } catch (Exception e) {
             e.printStackTrace();
         }
