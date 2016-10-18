@@ -63,16 +63,19 @@
                         
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div id="gender" class="btn-group" data-toggle="buttons">
-                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="male" data-parsley-multiple="gender"> &nbsp; Male &nbsp;
-                            </label>
-                            <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                              <input type="radio" name="gender" value="female" data-parsley-multiple="gender"> Female
-                            </label>
-                          </div>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                            <select class="form-control">
+                                <option>All</option>
+                                <option>Equal</option>
+                            </select>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        
                       </div>
                         
                         <div class="form-group">
@@ -81,9 +84,19 @@
                               <select class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="last-name" name="nationality" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="nationality" name="nationality" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
-                      </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dob">Date of Birth </label>
+                        <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select class="select_1 form-control"></select>
+                        </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="date" id="dob" name="dob" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
+                        </div>
+                        </div>
                         
                        <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="traveldoc-number">Travel Document Number </label>
@@ -121,7 +134,7 @@
                               <select class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="traveldoc-type" name="place-td-issue" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="place-td-issue" name="place-td-issue" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                         </div>
                         
@@ -135,30 +148,22 @@
                         </div>
                         </div>
                         
-                        
-                        
-                        
-                         <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dob">Date of Birth </label>
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="flight-date">Flight Date </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
                               <select class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="date" id="td-expdate" name="dob" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
+                            <input type="date" id="flight-date" name="flight-date" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
                         </div>
                         </div>
                         
-                        
-                        
-                        
-                        
-                        
-                        
+                                                
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button type="submit" class="btn btn-primary">Cancel</button>
-                          <button type="submit" class="btn btn-success">Submit</button>
+                          <button type="submit" class="btn btn-success">Search</button>
                         </div>
                       </div>
 
@@ -167,6 +172,7 @@
                 </div>
               </div>
             </div> 
+
 
 
 <%
