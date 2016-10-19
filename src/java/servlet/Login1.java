@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package servlet.user;
+package servlet;
 
 import common.DBCon;
 import java.io.IOException;
@@ -16,13 +16,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Sammy Guergachi <sguergachi at gmail.com>
+ * @author ADP-015
  */
-@WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
-public class AddUser extends HttpServlet {
+@WebServlet(name = "Login1", urlPatterns = {"/Login1"})
+public class Login1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,31 +37,32 @@ public class AddUser extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try {
+        PrintWriter out = response.getWriter();
+        try  {
             
-            PrintWriter out = response.getWriter();
+            Connection c = DBCon.getMyConnection();
+            Statement s = c.createStatement();
             
-            String username = request.getParameter("addUsername");
-            String commonname = request.getParameter("addCommonName");
-            String agencyName = request.getParameter("addAgencyName");
-            String email = request.getParameter("addEmail");
-            String agencyCode = request.getParameter("addAgencyCode");
-            String phone = request.getParameter("addPhone");
-            String password = request.getParameter("addPassword");
+            String un = request.getParameter("uname");
+            String pw = request.getParameter("pword");
             
+            ResultSet rs = s.executeQuery("SELECT * FROM ogauser where username ='"+ un +"' and password =md5( '"+pw+"') ");
             
-            Connection conn = DBCon.getMyConnection();
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM ogauser WHERE username='"+username+"'");
-            if(rs.next()){
-                st.executeUpdate("UPDATE ogauser SET commonname='"+commonname+"',agencyname='"+agencyName+"',email='"+email+"',agencycode='"+agencyCode+"',phone='"+phone+"' WHERE username='"+username+"' ");
-            }else{
-                st.executeUpdate("INSERT INTO ogauser(username,commonname,agencyname,email,agencycode,password,phone) VALUES('"+username+"','"+commonname+"','"+agencyName+"','"+email+"','"+agencyCode+"',md5('"+password+"'),'"+phone+"')");
+            if (rs.next()){
+                
+                HttpSession hs = request.getSession();
+                hs.setAttribute("username", un);
+                hs.setAttribute("commonname", rs.getString(2));
+                hs.setAttribute("agencyname", rs.getString(3));
+                response.sendRedirect("index.jsp");
+                
+            } else {
+                
+                response.sendRedirect("login.jsp");
+                
             }
-            
-            response.setStatus(200);
-            response.sendRedirect("user.jsp");
-        } catch (Exception e) {
+       
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

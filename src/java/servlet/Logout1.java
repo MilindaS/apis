@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author ADP-015
  */
-@WebServlet(name = "logout", urlPatterns = {"/logout"})
-public class Logout extends HttpServlet {
+@WebServlet(name = "Logout1", urlPatterns = {"/Logout1"})
+public class Logout1 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,7 +38,8 @@ public class Logout extends HttpServlet {
             HttpSession ses = request.getSession();
             ses.invalidate();
             response.sendRedirect("login.jsp");
-        }catch (Exception e){
+            
+        }catch(Exception e){
             e.printStackTrace();
         }
     }

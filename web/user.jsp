@@ -23,7 +23,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>All Users</h2>
-                    <a data-toggle="modal" data-target="#editUser" class="btn btn-primary btn-sm pull-right" style="margin: 0px 0px;">Add New User</a>
+                    <a data-toggle="modal" data-target="#addUser" class="btn btn-primary btn-sm pull-right" style="margin: 0px 0px;">Add New User</a>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -52,7 +52,8 @@
                                     <td class=" "><%=rs.getString("phone")%></td>
                                     <td class=" "> <a class="btn btn-success btn-xs viewToggle" data-username="<%=rs.getString("username")%>" style="margin: 0px 0px;">View</a>
                                         <a data-toggle="modal" class="btn btn-warning btn-xs editToggle" data-username="<%=rs.getString("username")%>" style="margin: 0px 0px;">Edit</a>
-                                        <a data-toggle="modal" data-target="#deleteUser" class="btn btn-danger btn-xs" style="margin: 0px 0px;">Delete</a>
+                                        <a data-toggle="modal" data-target="#deleteUser" class="btn btn-danger btn-xs deleteToggle" data-username="<%=rs.getString("username")%>" style="margin: 0px 0px;">Delete</a>
+                                        <a data-toggle="modal" class="btn btn-dark btn-xs changePToggle"  data-username="<%=rs.getString("username")%>" style="margin: 0px 0px;">Change Password</a>
                                     </td>
                                 </tr>
                                 <% }%>
@@ -119,9 +120,8 @@
 
 
 
-<!--Edit User Modal-->
-
-<div class="modal fade" tabindex="-1" role="dialog" id="editUser">
+<!--Add User Modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="addUser">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <form action="AddUser" method="POST" class="form-horizontal form-label-left" data-toggle="validator" role="form">
@@ -202,6 +202,96 @@
 
 
 
+
+
+
+
+
+
+<!--Edit User Modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="editUser">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="AddUser" method="POST" class="form-horizontal form-label-left" data-toggle="validator" role="form">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><span id="nameTitle">Add New</span> User</h4>
+            </div>
+            <div class="modal-body">
+                
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Username :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <span id="updateUsername"></span>
+                            <input type="text" class="form-control" placeholder="Enter Username Here" name="addUsername" id="editUsername" required >
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Common Name :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Enter Common Name Here" name="addCommonName" id="editCommonName" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Agency Name :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Enter Agency Name Here" name="addAgencyName" id="editAgencyName" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Agency Code :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Enter Agency Code Here" name="addAgencyCode" id="editAgencyCode" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Email :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="email" class="form-control" placeholder="Enter Email Here" name="addEmail" id="editEmail" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone :</label>
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control" placeholder="Enter Phone Here" name="addPhone" id="editPhone" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Save</button>
+                <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--View User Modal-->
 
 <div class="modal fade" tabindex="-1" role="dialog" id="deleteUser">
@@ -209,14 +299,14 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">User View</h4>
+                <h4 class="modal-title">Delete User</h4>
             </div>
             <div class="modal-body">
                 <p>Do you really want to delete this user ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Yea! Delete</button>
+                <button type="button" class="btn btn-danger deleteUserBtn">Yea! Delete</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -228,17 +318,30 @@
 <div class="modal fade" tabindex="-1" role="dialog" id="changePassword">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">User View</h4>
-            </div>
-            <div class="modal-body">
-                <p>Do you really want to delete this user ?</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger">Yea! Delete</button>
-            </div>
+            <form action="ChangePassword" method="POST" data-toggle="validator" role="form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Change Password</h4>
+                </div>
+                <div class="modal-body">
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="password" class="form-control has-feedback-left" placeholder="Password" name="addPasswordR" id="addPasswordR" data-minlength="6" required>
+                            <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
+                          </div>
+
+                          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="password" class="form-control has-feedback-left" placeholder="Re Password" name="addPasswordReR" id="addPasswordReR" data-match="#addPasswordR" data-match-error="Whoops, these don't match" placeholder="Confirm" required>
+                            <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+                            <div class="help-block with-errors"></div>
+                          </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger changePUserBtn">Yea! Change</button>
+                    <input type="hidden" id="chngeUsernameP" name="chngeUsernameP"/>
+                </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -275,8 +378,7 @@
             });
         });
         
-        
-        $('.editToggle').click(function () {
+        $(document).on('click','.editToggle',function(){
             var username = $(this).data('username');
             $.ajax({
                 url: 'GetUser',
@@ -284,21 +386,44 @@
                 data: {'username': username},
                 dataType: 'JSON',
                 success: function (data) {
-                    $('#nameTitle').html("Edit");
-                    $('#addUsername').val(data[0].username);
-                    $('#addUsername').attr("disabled","disabled");
-                    $('#addCommonName').val(data[0].commonname);
-                    $('#addEmail').val(data[0].email);
-                    $('#addAgencyName').val(data[0].agencyname);
-                    $('#addAgencyCode').val(data[0].agencycode);
-                    $('#cppre').remove();
-                    $('#addUsername').removeAttr('data-remote');
-                    $('#cpp').remove();
-                    $('#addPhone').val(data[0].phone);
+                    
+                    $('#editUsername').val(data[0].username);
+                    $('#editUsername').hide();
+                    $('#updateUsername').html(data[0].username);
+                    $('#updateUsername').css({'position':'relative','top':'10px','font-weight':'bold','padding':'4px 8px','background':'#DDD','border-radius':'4px'});
+                    $('#editCommonName').val(data[0].commonname);
+                    $('#editEmail').val(data[0].email);
+                    $('#editAgencyName').val(data[0].agencyname);
+                    $('#editAgencyCode').val(data[0].agencycode);
+                    $('#editUsername').removeAttr('data-remote');
+                    $('#editPhone').val(data[0].phone);
                     $('#editUser').modal('show');
-
                 }
             });
         });
+        
+        $(document).on('click','.deleteToggle',function(){
+            $('.deleteUserBtn').attr('data-username',$(this).data('username'));
+        });
+        $(document).on('click','.deleteUserBtn',function(){
+            var username = $(this).data('username');
+            $.ajax({
+                url: 'DeleteUser',
+                type: 'POST',
+                data: {'username': username},
+                dataType: 'JSON',
+                success: function (data) {
+                    alert('User successfully deleted!');
+                    window.location.reload(true);
+                }
+            });
+        });
+        
+        
+        $(document).on('click','.changePToggle',function(){
+            $('#chngeUsernameP').val($(this).data('username'));
+            $('#changePassword').modal('show');
+        });
+        
     });
 </script>
