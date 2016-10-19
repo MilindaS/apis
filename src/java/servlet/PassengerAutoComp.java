@@ -62,7 +62,7 @@ public class PassengerAutoComp extends HttpServlet {
             
             ResultSet rs = null;
             
-            rs = s.executeQuery("SELECT * FROM passenger WHERE First_Name LIKE ");
+          //  rs = s.executeQuery("SELECT * FROM passenger WHERE First_Name LIKE ");
             
             
             

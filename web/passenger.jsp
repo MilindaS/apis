@@ -27,16 +27,16 @@
                   </div>
                   <div class="x_content">
                     <br>
-                    <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                    <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" action="PassengerSearch" method="GET">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
                         </label>
                           <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control" ></select>
+                              <select name="first-name-select" class="select_1 form-control"></select>
                           </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="first-name" name="first-name" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                        
@@ -44,7 +44,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
                         </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="last-name-select"class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
@@ -54,7 +54,7 @@
                       <div class="form-group">
                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                                <select class="select_1 form-control"></select>
+                                <select name="middle-name-select" class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
@@ -64,7 +64,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                            <select class="form-control">
+                            <select name="gender-select"class="form-control">
                                 <option>All</option>
                                 <option>Equal</option>
                             </select>
@@ -81,7 +81,7 @@
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nationality">Nationality </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="nationality-select"class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="nationality" name="nationality" required="required" class="form-control col-md-7 col-xs-12">
@@ -91,7 +91,7 @@
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dob">Date of Birth </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="dob-select"class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <input type="date" id="dob" name="dob" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
@@ -101,7 +101,7 @@
                        <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="traveldoc-number">Travel Document Number </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="traveldoc-number-select"class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="traveldoc-number" name="traveldoc-number" required="required" class="form-control col-md-7 col-xs-12">
@@ -111,7 +111,7 @@
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="traveldoc-type">Travel Document Type </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="traveldoc-type-select"class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="traveldoc-type" name="traveldoc-type" required="required" class="form-control col-md-7 col-xs-12">
@@ -121,7 +121,7 @@
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="td-expdate">Travel Document Expiry Date </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="td-expdate-select"class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <input type="date" id="td-expdate" name="td-expdate" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
@@ -131,7 +131,7 @@
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="place-td-issue">Travel Document Issued Place </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="place-td-issue-select" class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="place-td-issue" name="place-td-issue" required="required" class="form-control col-md-7 col-xs-12">
@@ -141,7 +141,7 @@
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="flight-number">Flight Number </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                              <select name="flight-number-select" class="select_1 form-control"></select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="flight-number" name="flight-number" required="required" class="form-control col-md-7 col-xs-12">
@@ -151,10 +151,15 @@
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="flight-date">Flight Date </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
-                              <select class="select_1 form-control"></select>
+                            <select name="flight-date-select"class="form-control">
+                                <option>All</option>
+                                <option>Equal</option>
+                                <option>Between</option>
+                            </select>
                         </div>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="date" id="flight-date" name="flight-date" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
+                            <input type="date" id="flight-date1" name="flight-date1" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
+                            <input type="date" id="flight-date2" name="flight-date2" required="required" class="form-control col-md-7 col-xs-12 date-picker form-control col-md-7 col-xs-12 parsley-success active" data-parsley-id="16">
                         </div>
                         </div>
                         
@@ -175,72 +180,6 @@
 
 
 
-<%
-
-Passenger p = new Passenger();
-ResultSet rs = p.getPassengers();
-
-%>
-<div class="row">
-    <div class="page-title">
-        <div class="title_left">
-            <h3>&nbsp;&nbsp;Passengers <small style="font-size:11px;">APIS</small></h3>
-        </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="row">
-        <div class="clearfix"></div>
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="x_panel">
-                <div class="x_title">
-                    <h2>All Passengers</h2>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                    <div class="table-responsive">
-                        <table  id="datatable" class="table table-striped jambo_table bulk_action">
-                            <thead>
-                                <tr class="headings">
-                                    <th class="column-title">First Name </th>
-                                    <th class="column-title">Last Name </th>
-                                    <th class="column-title">Gender </th>
-                                    <th class="column-title">Nationality </th>
-                                    <th class="column-title">Travel Document Number</th>
-                                    <th class="column-title">Flight Number</th>
-                                    <th class="column-title">Flight Date</th>
-                                    <th class="column-title">Action</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <% while(rs.next()){ %>
-                                <tr class="even pointer">
-                                    <td class=" "><%=rs.getString("First_Name") %></td>
-                                    <td class=" "><%=rs.getString("Surname") %></td>
-                                    <td class=" "><%=rs.getString("Gender") %></td>
-                                    <td class=" "><%=rs.getString("Nationality") %></td>
-                                    <td class=" "><%=rs.getString("Travel_Doc_Number") %></td>
-                                    <td class=" "><%=rs.getString("Flight_No") %></td>
-                                    <td class=" "><%=rs.getString("Flight_Date") %></td>
-                                    <td class=" "> <a class="btn btn-success btn-xs" style="margin: 0px 0px;">View</a></td>
-                                </tr>
-                                <% } %>
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-
-    
-
-
-
 <%@include file="template/bottom.jsp" %>
 
 <script>
@@ -249,7 +188,7 @@ ResultSet rs = p.getPassengers();
     });
 </script>
 
-<script>
+<!--<script>
                               $(function(){
                                   $("#first-name").autocomplete({
                                       source : function(request,response){
@@ -272,7 +211,7 @@ ResultSet rs = p.getPassengers();
                                   });
                               });
                               
-                          </script>
+                          </script>-->
                           
  <script>
         var html  = "<option value = '1'>All</option><option value = '2'>Equal</option><option value = '3'>Contains Substring</option>";
