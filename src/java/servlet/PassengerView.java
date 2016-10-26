@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Guest
  */
 @WebServlet(name = "Passenger", urlPatterns = {"/Passenger"})
-public class Passenger extends HttpServlet {
+public class PassengerView extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

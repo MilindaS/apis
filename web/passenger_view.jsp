@@ -1,10 +1,10 @@
-<%@page import="servlet.Passenger"%>
+<%@page import="servlet.PassengerView"%>
 <%@page import="java.sql.ResultSet"%>
 <%@include file="template/top.jsp" %>
 
 <%
 
-Passenger p = new Passenger();
+PassengerView p = new PassengerView();
 ResultSet rs = p.getPassengers();
 
 %>

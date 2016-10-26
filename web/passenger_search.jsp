@@ -1,3 +1,4 @@
+<%@page import="servlet.PassengerSearch"%>
 <%@page import="servlet.Passenger"%>
 <%@page import="java.sql.ResultSet"%>
 <%@include file="template/top.jsp" %>
@@ -7,7 +8,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Search Passengers<small>by name</small></h2>
+                    <h2>Search Passengers<small>APIS</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -65,14 +66,14 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
                             <select name="gender-select"class="form-control">
-                                <option>All</option>
-                                <option>Equal</option>
+                                <option value='1' >All</option>
+                                <option value='2'>Equal</option>
                             </select>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control">
-                                <option>Male</option>
-                                <option>Female</option>
+                          <select class="form-control" name = "gender">
+                                <option>M</option>
+                                <option>F</option>
                             </select>
                         </div>
                         
@@ -139,6 +140,27 @@
                         </div>
                         
                         <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="emb-port">Embarkation Port </label>
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select name="emb-port-select" class="select_1 form-control"></select>
+                          </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" name="emb-port" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        </div>
+                        
+                        <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="disemb-port">Disembarkation Port </label>
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                              <select name="disemb-port-select" class="select_1 form-control"></select>
+                          </div>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="first-name" name="disemb-port" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="flight-number">Flight Number </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
                               <select name="flight-number-select" class="select_1 form-control"></select>
@@ -152,8 +174,8 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="flight-date">Flight Date </label>
                         <div class="col-md-2 col-sm-2 col-xs-12">
                             <select name="flight-date-select"class="form-control">
-                                <option>All</option>
-                                <option>Equal</option>
+                                <option value='1'>All</option>
+                                <option value='2'>Equal</option>
                                 <option>Between</option>
                             </select>
                         </div>  
@@ -176,7 +198,8 @@
                   </div>
                 </div>
               </div>
-            </div> 
+ 
+              </div> 
 
 
 
@@ -187,6 +210,19 @@
         $('#datatable').dataTable();
     });
 </script>
+
+<!--<script>
+    $.getJSON('PassengerSearch',function (data){
+        var items[];
+        $.each(data,function (key, val){
+            items.push("<tr>");
+            items.push("<td id=''"+key+"'>"+val.+"</td>");
+            
+        })
+        
+    })
+    
+</script>-->
 
 <!--<script>
                               $(function(){
